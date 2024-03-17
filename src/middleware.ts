@@ -1,6 +1,5 @@
 import NextAuth from "next-auth"
 
-import authConfig from "@/auth.config"
 import {
     DEFAULT_LOGIN_REDIRECT,
     apiAuthPrefix,
@@ -8,6 +7,11 @@ import {
     publicRoutes
 } from "@/routes"
 
+// ### Without Prisma Adapter
+// import { auth } from "@/auth"
+
+// ### With Prisma Adapter ###
+import authConfig from "@/auth.config"
 const { auth } = NextAuth(authConfig)
 
 export default auth((req) => {
@@ -21,22 +25,22 @@ export default auth((req) => {
     const isPublicRoute = publicRoutes.includes(nextUrl.pathname)
     const isAuthRoute = authRoutes.includes(nextUrl.pathname)
 
-    if(isApiAuthRoute) {
-        return null
+    if (isApiAuthRoute) {
+        return
     }
 
-    if(isAuthRoute) {
+    if (isAuthRoute) {
         if (isLoggedIn) {
             return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl))
         }
-        return null
+        return
     }
 
-    if(!isLoggedIn && !isPublicRoute) {
-    return Response.redirect(new URL("/auth/login", nextUrl))
-}
+    if (!isLoggedIn && !isPublicRoute) {
+        return Response.redirect(new URL("/auth/login", nextUrl))
+    }
 
-return null
+    return
 })
 
 // Optionally, don't invoke Middleware on some paths
