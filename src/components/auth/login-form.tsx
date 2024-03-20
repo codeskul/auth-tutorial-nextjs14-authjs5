@@ -17,13 +17,6 @@ import { FormError } from "../form-error"
 import { FormSuccess } from "../form-success"
 import { login } from "@/actions/login"
 
-type resTypes = {
-    data?: {
-        error?: string;
-        success?: string;
-    }
-}
-
 export const LoginForm = () => {
     const [error, setError] = useState<string | undefined>("")
     const [success, setSuccess] = useState<string | undefined>("")

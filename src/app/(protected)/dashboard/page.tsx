@@ -2,7 +2,7 @@ import { auth, signOut } from "@/auth"
 
 export default async function DashboardPage() {
     const session = await auth()
-
+    
     return (
         <div>
             <h1>Dashboard Page</h1>
