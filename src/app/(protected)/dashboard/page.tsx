@@ -1,19 +1,25 @@
-import { auth, signOut } from "@/auth"
+"use client";
 
-export default async function DashboardPage() {
-    const session = await auth()
-    
-    return (
-        <div>
-            <h1>Dashboard Page</h1>
-            <p>{JSON.stringify(session)}</p>
+// import { useSession, signOut } from "next-auth/react";
 
-            <form action={async () => {
-                "use server"
-                await signOut()
-            }}>
-                <button type="submit">Sign out</button>
-            </form>
-        </div>
-    )
+import { logout } from "@/actions/logout";
+import { Button } from "@/components/ui/button";
+import { useCurrentUser } from "@/hooks/use-current-user";
+
+export default function DashboardPage() {
+  //   const session = useSession();
+  const session = useCurrentUser();
+
+  const onClick = () => {
+    // signOut();
+    logout();
+  };
+
+  return (
+    <div>
+      {/* <p>{JSON.stringify(session)}</p> */}
+
+      <Button onClick={onClick}>Sign out</Button>
+    </div>
+  );
 }
