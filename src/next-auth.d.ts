@@ -6,6 +6,7 @@ declare module "next-auth" {
     user: {
       role: UserRole;
       isTwoFactorEnabled: boolean;
+      isOAuth: boolean;
     } & DefaultSession["user"];
   }
 }
@@ -22,5 +23,6 @@ declare module "next-auth/jwt" {
     /** OpenID ID Token */
     role?: UserRole;
     isTwoFactorEnabled?: boolean;
+    isOAuth: boolean;
   }
 }

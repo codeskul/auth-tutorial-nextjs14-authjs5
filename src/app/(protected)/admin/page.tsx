@@ -10,7 +10,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { UserRole } from "@prisma/client";
 import { toast } from "sonner";
 
-const AdminPage = async () => {
+const AdminPage = () => {
   // const role = useCurrentRole();
   // const role = await currentRole();
 

@@ -19,9 +19,9 @@ export const Navbar = () => {
         </Button>
         <Button
           asChild
-          variant={pathname === "/dashboard/settings" ? "default" : "outline"}
+          variant={pathname === "/settings" ? "default" : "outline"}
         >
-          <Link href="/dashboard/settings">Settings</Link>
+          <Link href="/settings">Settings</Link>
         </Button>
         <Button
           asChild
