@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import { LoginForm } from "./login-form";
+import { Suspense } from "react";
 
 interface LoginButtonProps {
   children: React.ReactNode;
@@ -26,7 +27,9 @@ export const LoginButton = ({
       <Dialog>
         <DialogTrigger asChild={asChild}>{children}</DialogTrigger>
         <DialogContent>
-          <LoginForm />
+          <Suspense>
+            <LoginForm />
+          </Suspense>
         </DialogContent>
       </Dialog>
     );
